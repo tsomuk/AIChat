@@ -10,7 +10,8 @@ import SwiftUI
 struct ProfileView: View {
     
     @State var showSetting: Bool = false
-    
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
         NavigationStack {
             Text("Profile")
@@ -23,7 +24,7 @@ struct ProfileView: View {
                 }
         }
         .sheet(isPresented: $showSetting) {
-            Text("Setting")
+            SettingsView()
         }
     }
     
