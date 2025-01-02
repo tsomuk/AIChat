@@ -30,7 +30,6 @@ struct OnboardingCompletedView: View {
     func onFinishButtonPressed() {
         root.updateViewState(showTabBarView: true)
     }
-    
 }
 
 #Preview {
