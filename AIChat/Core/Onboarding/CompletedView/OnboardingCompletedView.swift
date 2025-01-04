@@ -36,9 +36,6 @@ struct OnboardingCompletedView: View {
     }
     
     private var ctaButton: some View {
-        Button {
-            onFinishButtonPressed()
-        } label: {
             ZStack {
                 if isCompletingProfileSetup {
                     ProgressView()
@@ -47,8 +44,8 @@ struct OnboardingCompletedView: View {
                     Text("Finish")
                 }
             }
-            .callToActionButton()
-        }
+            .callToActionButton(background: selectedColor)
+            .anyButton(.press) { onFinishButtonPressed() }
         .disabled(isCompletingProfileSetup)
     }
     

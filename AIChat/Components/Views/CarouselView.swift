@@ -20,7 +20,7 @@ struct CarouselView<Content: View, T: Hashable>: View {
                     LazyHStack(spacing: 0) {
                         ForEach(items, id: \.self) { item in
                             content(item)
-                                .scrollTransition(.interactive.threshold(.visible(0.95)),  transition: { content, phase in
+                                .scrollTransition(.interactive.threshold(.visible(0.95)), transition: { content, phase in
                                     content
                                         .scaleEffect(phase.isIdentity ? 1 : 0.9)
                                 })

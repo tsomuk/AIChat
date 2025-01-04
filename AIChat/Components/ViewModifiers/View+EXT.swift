@@ -7,13 +7,13 @@
 import SwiftUI
 
 extension View {
-    func callToActionButton() -> some View {
+    func callToActionButton(background: Color = .accent, foregroundColor: Color = .white) -> some View {
         self
             .font(.headline)
-            .foregroundColor(.white)
+            .foregroundColor(foregroundColor)
             .frame(maxWidth: .infinity)
             .frame(height: 55)
-            .background(.accent)
+            .background(background)
             .cornerRadius(16)
     }
     

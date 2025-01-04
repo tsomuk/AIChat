@@ -11,12 +11,14 @@ struct ExploreView: View {
     
     @State private var featuredAvatars: [AvatarModel] = AvatarModel.mocks
     @State private var categories: [CharacterOption] = CharacterOption.allCases
-    
+    @State private var popularAvatars: [AvatarModel] = AvatarModel.mocks
+
     var body: some View {
         NavigationStack {
             List {
                 featuredSection
                 categoriesSection
+                popularSection
             }
             .navigationTitle("Explore")
         }
@@ -31,11 +33,14 @@ struct ExploreView: View {
                         subtitle: avatar.characterDescription,
                         imageName: avatar.profileImageName
                     )
+                    .anyButton {
+                        // add logic for tap
+                    }
                 }
             }
             .removeRowViewFormatting()
         } header: {
-            Text("Featured Avatars")
+            Text("Featured")
         }
     }
     
@@ -49,6 +54,9 @@ struct ExploreView: View {
                                 title: category.rawValue.capitalized,
                                 imageName: Constants.randomImage
                             )
+                            .anyButton {
+                                // add logic for tap
+                            }
                         }
                     }
                 }
@@ -63,6 +71,23 @@ struct ExploreView: View {
         }
     }
     
+    private var popularSection: some View {
+        Section {
+            ForEach(popularAvatars, id: \.self) { avatar in
+                CustomListCellView(
+                    title: avatar.name,
+                    subtitle: avatar.characterDescription,
+                    imageName: avatar.profileImageName
+                )
+                .anyButton(.highlight) {
+                    // add action on press
+                }
+                .removeRowViewFormatting()
+            }
+        } header: {
+            Text("popular")
+        }
+    }
 }
 
 #Preview {
