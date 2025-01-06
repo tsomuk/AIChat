@@ -49,7 +49,7 @@ struct ProfileView: View {
             }
             .frame(width: 100)
             .frame(maxWidth: .infinity)
-            .removeRowViewFormatting()
+            .removeListRowFormatting()
         }
     }
     
@@ -67,7 +67,7 @@ struct ProfileView: View {
                 .frame(maxWidth: .infinity)
                 .font(.body)
                 .foregroundStyle(.secondary)
-                .removeRowViewFormatting()
+                .removeListRowFormatting()
             } else {
                 ForEach(myAvatars, id: \.self) { avatar in
                     CustomListCellView(
@@ -78,7 +78,7 @@ struct ProfileView: View {
                     .anyButton(.highlight, action: {
                         // add logic
                     })
-                    .removeRowViewFormatting()
+                    .removeListRowFormatting()
                 }
                 .onDelete { indexSet in
                     onDeleteAvatar(indexSet: indexSet)

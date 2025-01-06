@@ -43,13 +43,7 @@ struct ChatRowCellView: View {
             
             if hasNewChat {
                 Text("NEW")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                    .padding(.vertical, 6)
-                    .padding(.horizontal, 8)
-                    .background(.blue)
-                    .cornerRadius(6)
+                    .badgeButton()
             }
         }
         .padding(.vertical, 12)
@@ -62,10 +56,10 @@ struct ChatRowCellView: View {
 #Preview {
     List {
         ChatRowCellView()
-            .removeRowViewFormatting()
+            .removeListRowFormatting()
         ChatRowCellView(hasNewChat: false)
-            .removeRowViewFormatting()
+            .removeListRowFormatting()
         ChatRowCellView(imageName: nil)
-            .removeRowViewFormatting()
+            .removeListRowFormatting()
     }
 }

@@ -38,7 +38,7 @@ struct ExploreView: View {
                     }
                 }
             }
-            .removeRowViewFormatting()
+            .removeListRowFormatting()
         } header: {
             Text("Featured")
         }
@@ -65,7 +65,7 @@ struct ExploreView: View {
                 .scrollTargetLayout()
                 .scrollTargetBehavior(.viewAligned)
             }
-            .removeRowViewFormatting()
+            .removeListRowFormatting()
         } header: {
             Text("Categories")
         }
@@ -82,7 +82,7 @@ struct ExploreView: View {
                 .anyButton(.highlight) {
                     // add action on press
                 }
-                .removeRowViewFormatting()
+                .removeListRowFormatting()
             }
         } header: {
             Text("popular")

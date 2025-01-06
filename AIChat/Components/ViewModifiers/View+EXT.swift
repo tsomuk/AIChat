@@ -17,11 +17,22 @@ extension View {
             .cornerRadius(16)
     }
     
+    func badgeButton() -> some View {
+        self
+            .font(.caption)
+            .fontWeight(.semibold)
+            .foregroundColor(.white)
+            .padding(.vertical, 6)
+            .padding(.horizontal, 8)
+            .background(.blue)
+            .cornerRadius(6)
+    }
+        
     func tappableBackground() -> some View {
         background(Color.black.opacity(0.001))
     }
     
-    func removeRowViewFormatting() -> some View {
+    func removeListRowFormatting() -> some View {
         self
             .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
             .listRowBackground(Color.clear)
