@@ -19,11 +19,11 @@ struct ChatsView: View {
                         currentUserId: nil, // Add cuid
                         chat: chat,
                     getAvatar: {
-                        try? await Task.sleep(for: .seconds(1))
+                        try? await Task.sleep(for: .seconds(3))
                         return .mock
                     },
                     getLastChatMessage: {
-                        try? await Task.sleep(for: .seconds(1))
+                        try? await Task.sleep(for: .seconds(3))
                         return .mock
                     }
                     

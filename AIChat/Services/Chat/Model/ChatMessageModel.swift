@@ -31,7 +31,7 @@ struct ChatMessageModel {
         self.dateCreated = dateCreated
     }
     
-    static var mock: ChatMessageModel {
+    static var mock: Self {
         mocks[0]
     }
     
@@ -40,7 +40,7 @@ struct ChatMessageModel {
         return seenByIds.contains(userID)
     }
     
-    static var mocks: [ChatMessageModel] {
+    static var mocks: [Self] {
         let now = Date()
         return [
             ChatMessageModel(
