@@ -36,9 +36,8 @@ struct ProfileView: View {
             SettingsView()
         }
         .fullScreenCover(isPresented: $showCreateAvatar) {
-            Text("Create avatar")
+            CreateAvatarView()
         }
-        
     }
     
     private var myInfoSection: some View {
