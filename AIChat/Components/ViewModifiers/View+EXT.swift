@@ -27,7 +27,7 @@ extension View {
             .background(.blue)
             .cornerRadius(6)
     }
-        
+    
     func tappableBackground() -> some View {
         background(Color.black.opacity(0.001))
     }
@@ -46,6 +46,24 @@ extension View {
                     .black.opacity(0.3),
                     .black.opacity(0.4)
                 ], startPoint: .top, endPoint: .bottom)
+            )
+    }
+    
+    @ViewBuilder
+    func ifSatisfiedCondition(_ condition: Bool, transform: (Self) -> some View) -> some View {
+        if condition {
+            transform(self) // with modifier
+        } else {
+            self // originally
+        }
+    }
+    
+    func showModal(showModal: Binding<Bool>, @ViewBuilder content: () -> some View) -> some View {
+        self
+            .overlay(
+                ModalSupportView(showModal: showModal) {
+                    content()
+                }
             )
     }
 }
