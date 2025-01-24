@@ -9,8 +9,8 @@ import SwiftUI
 
 struct AsyncCallToActionButton: View {
     
-    var isLoading: Bool
-    var title: String
+    var isLoading: Bool = false
+    var title: String = "Save"
     var action: () -> Void
     
     var body: some View {
@@ -28,10 +28,27 @@ struct AsyncCallToActionButton: View {
     }
 }
 
-#Preview {
-    VStack(spacing: 25) {
-        AsyncCallToActionButton(isLoading: true, title: "", action: {})
-        AsyncCallToActionButton(isLoading: false, title: "Finish", action: {})
+private struct PreviewView: View {
+    
+    @State private var isLoading: Bool = false
+    
+    var body: some View {
+        AsyncCallToActionButton(
+            isLoading: isLoading,
+            title: "Finish",
+            action: {
+                isLoading = true
+                
+                Task {
+                    try? await Task.sleep(for: .seconds(3))
+                    isLoading = false
+                }
+            }
+        )
     }
-    .padding()
+}
+
+#Preview {
+    PreviewView()
+        .padding()
 }

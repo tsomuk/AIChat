@@ -56,8 +56,10 @@ private struct SignInWithAppleButtonViewRepresentable: UIViewRepresentable {
 #Preview("SignInWithAppleButtonView") {
     VStack(spacing: 4) {
         SignInWithAppleButtonView(
-            type: .continue,
-            style: .black, cornerRadius: 10)
+            type: .signUp,
+            style: .black,
+            cornerRadius: 10
+        )
         .frame(height: 50)
     }
     .padding(40)

@@ -5,6 +5,7 @@
 //  Created by Nikita Tsomuk on 16.01.2025.
 //
 import SwiftUI
+import Foundation
 
 struct AnyAppAlert: Sendable {
     var title: String
@@ -14,7 +15,7 @@ struct AnyAppAlert: Sendable {
     init(
         title: String,
         subtitle: String? = nil,
-        buttons: (@Sendable () -> AnyView)?  = nil
+        buttons: (@Sendable () -> AnyView)? = nil
     ) {
         self.title = title
         self.subtitle = subtitle
@@ -28,9 +29,8 @@ struct AnyAppAlert: Sendable {
     }
     
     init(error: Error) {
-        self.init(title: "Error", subtitle: error.localizedDescription)
+        self.init(title: "Error", subtitle: error.localizedDescription, buttons: nil)
     }
-    
 }
 
 enum AlertType {
@@ -62,4 +62,5 @@ extension View {
                 }
         }
     }
+    
 }

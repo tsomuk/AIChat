@@ -62,6 +62,6 @@ struct ChatBubbleViewBuilder: View {
                 isCurrentUser: true
             )
         }
+        .padding(12)
     }
-    .padding()
 }
