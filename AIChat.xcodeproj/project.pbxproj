@@ -10,6 +10,7 @@
 		110A74012D44AE7100E39808 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 110A74002D44AE7100E39808 /* FirebaseAuth */; };
 		110A74042D44AE8F00E39808 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 110A74032D44AE8F00E39808 /* SDWebImageSwiftUI */; };
 		110A74072D44AEA400E39808 /* SwiftfulUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 110A74062D44AEA400E39808 /* SwiftfulUtilities */; };
+		11A58C092D510BE2001048EA /* SignInAppleAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 11A58C082D510BE2001048EA /* SignInAppleAsync */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +36,33 @@
 		1141E81B2D267D1B0017389A /* AIChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AIChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		11C7983C2D51055D00E6C8DC /* Exceptions for "AIChat" folder in "AIChat" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Services/Auth/Models/UserAuthInfo+Firebase.swift",
+			);
+			target = 1141E7FF2D267D190017389A /* AIChat */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		11C7983D2D51055D00E6C8DC /* Exceptions for "AIChat" folder in "Copy Bundle Resources" phase from "AIChat" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 1141E7FE2D267D190017389A /* Resources */;
+			membershipExceptions = (
+				"Services/Auth/Models/UserAuthInfo+Firebase.swift",
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1141E8022D267D190017389A /* AIChat */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				11C7983C2D51055D00E6C8DC /* Exceptions for "AIChat" folder in "AIChat" target */,
+				11C7983D2D51055D00E6C8DC /* Exceptions for "AIChat" folder in "Copy Bundle Resources" phase from "AIChat" target */,
+			);
 			path = AIChat;
 			sourceTree = "<group>";
 		};
@@ -58,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11A58C092D510BE2001048EA /* SignInAppleAsync in Frameworks */,
 				110A74042D44AE8F00E39808 /* SDWebImageSwiftUI in Frameworks */,
 				110A74012D44AE7100E39808 /* FirebaseAuth in Frameworks */,
 				110A74072D44AEA400E39808 /* SwiftfulUtilities in Frameworks */,
@@ -125,6 +151,7 @@
 				110A74002D44AE7100E39808 /* FirebaseAuth */,
 				110A74032D44AE8F00E39808 /* SDWebImageSwiftUI */,
 				110A74062D44AEA400E39808 /* SwiftfulUtilities */,
+				11A58C082D510BE2001048EA /* SignInAppleAsync */,
 			);
 			productName = AIChat;
 			productReference = 1141E8002D267D190017389A /* AIChat.app */;
@@ -212,6 +239,7 @@
 				110A73FF2D44AE7100E39808 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				110A74022D44AE8F00E39808 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				110A74052D44AEA400E39808 /* XCRemoteSwiftPackageReference "SwiftfulUtilities" */,
+				11A58C072D510BE2001048EA /* XCRemoteSwiftPackageReference "SignInAppleAsync" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1141E8012D267D190017389A /* Products */;
@@ -673,6 +701,14 @@
 				minimumVersion = 1.1.6;
 			};
 		};
+		11A58C072D510BE2001048EA /* XCRemoteSwiftPackageReference "SignInAppleAsync" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SignInAppleAsync.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -690,6 +726,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 110A74052D44AEA400E39808 /* XCRemoteSwiftPackageReference "SwiftfulUtilities" */;
 			productName = SwiftfulUtilities;
+		};
+		11A58C082D510BE2001048EA /* SignInAppleAsync */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11A58C072D510BE2001048EA /* XCRemoteSwiftPackageReference "SignInAppleAsync" */;
+			productName = SignInAppleAsync;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

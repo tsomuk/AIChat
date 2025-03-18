@@ -10,10 +10,13 @@ import SwiftUI
 struct SettingsView: View {
     
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.authService) private var authService
     @Environment(AppState.self) private var appState
     @State private var isPremium: Bool = true
     @State private var isAnonymousUser: Bool = false
     @State private var showCreateAccountView: Bool = false
+    @State private var showAlert: AnyAppAlert?
+
     
     var body: some View {
         NavigationStack {
@@ -23,10 +26,16 @@ struct SettingsView: View {
                 applicationSection
             }
             .navigationTitle("Settings")
-            .sheet(isPresented: $showCreateAccountView) {
-                CreateAccountView()
-                    .presentationDetents([.medium])
+            .sheet(isPresented: $showCreateAccountView, onDismiss: {
+                    setAnonymousAccountStatus()
+                }, content: {
+                    CreateAccountView()
+                        .presentationDetents([.medium])
+                })
+            .onAppear {
+                setAnonymousAccountStatus()
             }
+            .showCustomAlert(alert: $showAlert)
         }
     }
     
@@ -53,7 +62,7 @@ struct SettingsView: View {
                 .foregroundStyle(.red)
                 .rowFormation()
                 .anyButton(.highlight) {
-                    // DELETE
+                    onDeleteAccountPressed()
                 }
                 .removeListRowFormatting()
         } header: {
@@ -125,11 +134,49 @@ struct SettingsView: View {
     
     private func onSignOutPressed() {
         // do some logic to sign out of app
-        dismiss()
         Task {
-            try? await Task.sleep(for: .seconds(0.5))
-            appState.updateViewState(showTabBarView: false)
+            do {
+                try authService.signOut()
+                await dismissScreen()
+            } catch {
+                showAlert = AnyAppAlert(error: error)
+            }
         }
+    }
+    
+    private func dismissScreen() async {
+        dismiss()
+        try? await Task.sleep(for: .seconds(0.5))
+        appState.updateViewState(showTabBarView: false)
+    }
+    
+    private func onDeleteAccountPressed() {
+        showAlert = AnyAppAlert(
+            title: "Delete account",
+            subtitle: "This action is permanent and cannot be undone. Your data will be deleted forever.",
+            buttons: {
+                AnyView(
+                    Button("Delete", role: .destructive, action: {
+                        onDeleteAccountConfirmed()
+                    })
+                )
+            }
+        )
+    }
+    
+    private func onDeleteAccountConfirmed() {
+        Task {
+            do {
+                try await authService.deleteAccount()
+                await dismissScreen()
+            } catch {
+                showAlert = AnyAppAlert(error: error)
+            }
+        }
+    }
+    
+    private func setAnonymousAccountStatus() {
+        isAnonymousUser = authService.getAuthenticatedUser()?.isAnonymous == true
     }
 }
 

@@ -10,6 +10,7 @@ import SwiftUI
 struct WelcomeView: View {
     
     @State private var imageName = Constants.randomImage
+    @Environment(AppState.self) private var root
     @State private var showSignInView = false
     
     var body: some View {
@@ -30,7 +31,10 @@ struct WelcomeView: View {
         .sheet(isPresented: $showSignInView) {
             CreateAccountView(
                 title: "Sign In",
-                subtitle: "Connect to an existing account."
+                subtitle: "Connect to an existing account.",
+                onDidSignIn: { isNewUser in
+                    handleDidSignIn(isNewUser: isNewUser)
+                }
             )
                 .presentationDetents([.height(300)])
         }
@@ -83,6 +87,14 @@ struct WelcomeView: View {
             }
         }
         
+    }
+    
+    private func handleDidSignIn(isNewUser: Bool) {
+        if isNewUser {
+            // Do nothing, user goes through onboarding
+        } else {
+            root.updateViewState(showTabBarView: true)
+        }
     }
     
     private func onSignInPressed() {

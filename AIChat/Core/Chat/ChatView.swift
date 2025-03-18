@@ -45,7 +45,6 @@ struct ChatView: View {
                 profileModal(avatar: avatar)
             }
         }
-        
     }
     
     private var scrollSection: some View {
