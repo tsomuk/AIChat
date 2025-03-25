@@ -8,7 +8,7 @@
 import FirebaseAuth
 
 // extension doesn't work for some reason. So this init in the same file as UserAuthInfo
-extension UserAuthInfo {
+extension UserAuthInfo: Sendable {
     
 //    init(user: User) {
 //        self.uid = user.uid
